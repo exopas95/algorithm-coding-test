@@ -3,27 +3,29 @@
 - 왕실의 나이트
 
 [입력 조건]
-- 첫째 줄에 N(2 <= N <= 1,000), M(1 <= M <= 10,000), K(1 <= K <= 10,000)의 자연수가 주어지며, 각 자연수는 공백으로 구분된다.
-- 둘째 줄에 N개의 자연수가 주어진다. 각 자연수는 공백으로 구분한다. 단, 각각의 자연수는 1 이상 10,000 이하의 수로 주어진다.
-- 입력으로 주어지는 K는 항상 M보다 작거나 같다.
+- 첫째 줄에 8 * 8 좌표 평면상에서 현재 나이트가 위치한 곳의 좌표를 나타내는 두 문자로 구성된 문자열이 입력된다.
+- 입력문자는 a1처럼 열과 행으로 이뤄진다.
 
 [출력 조건]
-- 첫째 줄에 동빈이의 큰 수의 법칙에 따라 더해진 답을 출력한다.
-- 동빈이의 큰 수의 법칙: 주어진 수를 M번 더하여 가장 큰수를 만드는데 특정 인덱스가 연속해서 K번을 초과해서 더할 수 없다.
+- 첫째 줄에 나이트가 이동할 수 있는 경우의 수를 출력하시오.
 '''
 
 # %%
-n, m, k = map(int, input().split())
-data = list(map(int, input().split()))
+x_label = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8}
 
-first = max(data)
-data.pop(-1)
-second = max(data)
+location = input()
+location_x, location_y = location[0], int(location[1])
+location_x = x_label[location_x]
 
-first_iter = int(m / (k + 1)) * k + (m % (k + 1))
-second_iter = m - first_iter
+movements = [(1, -2), (1, 2), (2, 1), (2, -1), (-1, -2), (-1, 2), (-2, 1), (-2, -1)]
+count = 0
+for move in movements:
+    x = location_x + move[0]
+    y = location_y + move[1]
 
-result = first * first_iter + second * second_iter
-print(result)
+    if x * y > 0:
+        count += 1
+print(count)
+
 
 # %%
