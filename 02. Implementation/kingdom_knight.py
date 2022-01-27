@@ -23,7 +23,7 @@ for move in movements:
     x = location_x + move[0]
     y = location_y + move[1]
 
-    if x * y > 0:
+    if x > 0 and y > 0 and x < 8 and y < 8:
         count += 1
 print(count)
 
