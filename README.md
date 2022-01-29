@@ -45,13 +45,13 @@
 ```python
 # DFS 메서드 정리
 def dfs(grapyh, v, visited):
-  # 현재 노드를 방문 처리
-  visitied[v] = True
+    # 현재 노드를 방문 처리
+    visitied[v] = True
   
-  # 현재 노드와 연결된 다른 노드를 재귀적으로 방문
-  for i in graph[v]:
-    if not visitied[i]:
-      dfs(graph, i, visited)
+    # 현재 노드와 연결된 다른 노드를 재귀적으로 방문
+    for i in graph[v]:
+        if not visitied[i]:
+            dfs(graph, i, visited)
 ```
  ### BFS(Breadth First Search)
  너비 우선 탐색이라고 부르며, 가까운 노드부터 탐색하는 알고리즘이다.
@@ -63,31 +63,36 @@ def dfs(grapyh, v, visited):
  ```python
  # BFS 메서드 정리
  def bfs(graph, start, visitied):
-   # 큐(Queue) 구현을 위해 deque 라이브러리 사용
-   queue = deque([start])
-   # 현재 노드를 방문 처리
-   visitied[start] = True
-   # 큐가 빌 때가지 반복
-   while queue:
-     # 큐에서 하나의 원소를 뽑기
-     v = queue.popleft()
-     # 해당 원소와 연결된, 아직 방문하지 않은 원소들을 큐에 삽입
-     for i in graph[v]:
-       if not visitied[i]:
-         queue.append(i)
-         visitied[i] = True
+    # 큐(Queue) 구현을 위해 deque 라이브러리 사용
+    queue = deque([start])
+    
+    # 현재 노드를 방문 처리
+    visitied[start] = True
+
+    # 큐가 빌 때가지 반복
+    while queue:
+        # 큐에서 하나의 원소를 뽑기
+        v = queue.popleft()
+        
+        # 해당 원소와 연결된, 아직 방문하지 않은 원소들을 큐에 삽입
+        for i in graph[v]:
+            if not visitied[i]:
+            queue.append(i)
+            visitied[i] = True
  ```
  ## 04. 정렬
  정렬이란 데이터를 특정한 기준에 따라서 순서대로 나열하는 것을 말한다. 정렬 알고리즘은 이진 탐색의 전처리 과정으로 내림차순, 혹은 오름차순으로 정렬을 해야 이진 탐색을 적용할 수 있기 때문에 정렬 알고리즘을 잘 아는 것은 매우 중요하다. 여기서는 선택 정렬, 삽입 정렬, 퀵 정렬, 계수 정렬과 함께 파이썬에서 정렬에 어떤 라이브러리를 사용해야하는 지를 다룬다.
  ### 선택 정렬
  **가장 작은 데이터를 선택해 맨 앞에 있는 데이터와 바꾸고, 그다음 작은 데이터를 선택해 앞에서 두 번째 데이터와 바꾸는 과정을 반복**하는 정렬로 '매번 가장 작은 것을 선택'한다는 의미에서 선택 정렬 알고리즘이라고 한다.
  ```Python
- for i in range(len(array)):
-   min_index = i
-   for j in range(i + 1, len(array)):
-     if array[min_index] > array[j]:
-       min_index = j
-   array[i], array[min_index] = array[min_index], array[i]  # 파이썬은 이런 식으로 Swap이 가능
+for i in range(len(array)):
+    min_index = i
+
+    for j in range(i + 1, len(array)):
+        if array[min_index] > array[j]:
+            min_index = j
+            
+    array[i], array[min_index] = array[min_index], array[i]  # 파이썬은 이런 식으로 Swap이 가능
  ```
  ### 삽입 정렬
  ### 퀵 정렬
