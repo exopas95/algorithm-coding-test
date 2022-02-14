@@ -510,8 +510,10 @@ for i in range(1, n + 1):
  구체적인 점화식은 다음과 같다.
  
  
- <center>D<sub>ab</sub> - min(D<sub>ab</sub>, D<sub>ak</sub> + D<sub>kb</sub>)</center>
- 
+ <div align="center">
+   *D<sub>ab</sub> - min(D<sub>ab</sub>, D<sub>ak</sub> + D<sub>kb</sub>)*
+ </div>
+
  
  따라서 전체적으로 3중 반복문을 이용하여 이 점화식에 따라 최단거리 테이블을 갱신하면 된다. 위 점화식을 말로 풀어 설명하자면
  A에서 B로가는 최소 비용과 A에서 K를 거쳐 B로가는 비용을 비교하여 더 작은 값으로 갱신하겠다는 것이다. 즉, '바로 이동하는 거리가'가 
