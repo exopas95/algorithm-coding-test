@@ -510,7 +510,7 @@ for i in range(1, n + 1):
  구체적인 점화식은 다음과 같다.
  
  
- <center>*D<sub>ab</sub> - min(D<sub>ab</sub>, D<sub>ak</sub> + D<sub>kb</sub>)*</center>
+ <center>\*D<sub>ab</sub> - min(D<sub>ab</sub>, D<sub>ak</sub> + D<sub>kb</sub>)*\</center>
  
  
  따라서 전체적으로 3중 반복문을 이용하여 이 점화식에 따라 최단거리 테이블을 갱신하면 된다. 위 점화식을 말로 풀어 설명하자면
