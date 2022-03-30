@@ -301,7 +301,7 @@ def fibo(x):
  ```python
 d = [0] * 100
 d[1] = 1
-d[2] = 2
+d[2] = 1
 n = 99
 
 for i in range(3, n+1):
