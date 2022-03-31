@@ -570,6 +570,55 @@ for k in range(1, n + 1):
  ### 서로소 집합
  수학에서 서로소 집합이란 공통 원소가 없는 두 집합을 의미한다. 서로소 집합 자료구조는 몇몇 그래프 알고리즘에서 매우 중요하게 사용되므로 그래프 알고리즘 이론 전에 설명한다.
  서로소 집합 자료구조란 **서로소 부분 집합들로 나누어진 원소들의 데이터를처리하기 위한 자료구조**이며 다음 두 연산으로 조작한다.
- - union: 2개의 원소가 포함된 집합을 하나의 집합으로 합치는 연산
+ - union: 2개의 원소가 포함된 집합을 하나의 집합으로 합치는 연산 (더 큰 노드가 더 작은 노드를 가르킨다.)
  - find: 특정한 원소가 속한 집합이 어떤 집합인지 알려주는 연산이다.
- 서로소 집합 자료구조는 합집합과 찾기 연산으로 구성되어 union-find 자료구조 라고 불리기도 한다.
+ 서로소 집합 자료구조는 합집합과 찾기 연산으로 구성되어 union-find 자료구조 라고 불리기도 한다. 
+ 
+ 기본적인 형태의 서로소 집합 자료구조에서는 루트 노드에 즉시 접근할 수 없다. 
+ - 루트 노드를 찾기 위해 부모 테이블을 계속해서 확인하며 거슬로 올라가야 한다.
+ ```python
+ # 특정 원소가 속한 집합을 찾기
+ def find_parent(parent, x):
+     if parent[x] != x:
+         return find_parent(parent, parent[x])
+     return x
+
+
+ # 두 원소가 속한 집합을 합치기
+ def union_parent(parent, a, b):
+     a = find_parent(parent, a)
+     b = find_parent(parent, b)
+     if a < b:
+         parent[b] = a
+     else:
+         parent[a] = b
+
+
+ # 노드의 개수와 간선(Union 연산)의 개수 입력 받기
+ v, e = map(int, input().split())
+ # 부모 테이블 초기화하기
+ parent = [0] * (v + 1)
+
+ # 부모 테이블 상에서, 부모를 자기 사진으로 초기화하기
+ for i in range(1, v + 1):
+     parent[i] = i
+
+ for i in range(e):
+     a, b = map(int, input().split())
+     union_parent(parent, a, b)
+
+ # 각 원소가 속한 집합 출력하기
+ print("각 원소가 속한 집합: ", end="")
+ for i in range(1, v + 1):
+     print(find_parent(parent, i), end=" ")
+ print()
+
+ # 부모 테이블 내용 출력하기
+ print("부모 테이블: ", end="")
+ for i in range(1, v + 1):
+     print(parent[i], end=" ")
+ ```
+ 
+ 
+ 
+
