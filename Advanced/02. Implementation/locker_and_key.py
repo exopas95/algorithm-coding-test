@@ -54,3 +54,8 @@ def solution(key, lock):
                         new_lock[x + i][y + i] -= key[i][j]
 
     return False
+
+
+eee = [[0, 0, 0], [1, 0, 0], [0, 1, 1]]
+fff = [[1, 1, 1], [1, 1, 0], [1, 0, 1]]
+print(solution(eee, fff))

@@ -15,7 +15,7 @@ from itertools import combinations
 import numpy as np
 
 N = 5
-List = [3, 2, 1, 1, 9]
+List = [3, 2, 1, 1, 7]
 
 possible_list = []
 
@@ -25,7 +25,7 @@ for i in range(0, len(List)):
 
 result = sorted(set(possible_list))
 
-for i in range(0, max(result)):
+for i in range(0, max(result) + 2):
     if i not in result:
         print(i)
         break
